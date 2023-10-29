@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:loginapp/catelog.dart';
+import 'package:loginapp/dukan.dart';
 import 'package:loginapp/home.dart';
 import 'package:loginapp/info.dart';
+import 'package:loginapp/order.dart';
+import 'package:loginapp/payment.dart';
 
 class bottomnavi extends StatefulWidget {
   const bottomnavi({super.key});
@@ -13,6 +17,10 @@ class _bottomnaviState extends State<bottomnavi> {
   int _currentindex = 0;
   List<Widget> tabs = [
     managestore(),
+    categorysub(),
+    orderscreen(),
+    paymentscreen(),
+    ducanscreen(),
     infoscreen(),
   ];
   @override
@@ -28,20 +36,24 @@ class _bottomnaviState extends State<bottomnavi> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
+              icon: Icon(Icons.category),
+              label: 'category',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart),
+              label: 'order',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.account_box_outlined),
+              label: 'payment',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.high_quality),
+              label: 'ducan',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.info),
               label: 'info',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.account_box_outlined),
-              label: 'Profile',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.account_box_outlined),
-              label: 'payment',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.account_box_outlined),
-              label: 'payment',
             ),
           ],
           onTap: (index) {

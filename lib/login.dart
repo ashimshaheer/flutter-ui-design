@@ -5,27 +5,37 @@ import 'package:loginapp/bottomnavigation.dart';
 import 'package:loginapp/home.dart';
 import 'package:email_validator/email_validator.dart';
 
-class loginscreen extends StatelessWidget {
-  loginscreen({super.key});
+// ignore: camel_case_types
+class loginscreen extends StatefulWidget {
+  const loginscreen({super.key});
+
+  @override
+  State<loginscreen> createState() => _loginscreenState();
+}
+
+// ignore: camel_case_types
+class _loginscreenState extends State<loginscreen> {
   final _usernameController = TextEditingController();
+
   final _userpasswordController = TextEditingController();
+
   bool _isValid = false;
+
   final _formkey = GlobalKey<FormState>();
 
-  get child => null;
-// Method to validate the email the take
-// the user email as an input and
-// print the bool value in the console.
-  // ignore: non_constant_identifier_names
+  bool _ishidden = false;
 
+  @override
+
+  // Method to validate the email the take
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('login page'),
+          title: const Text('login page'),
           centerTitle: true,
-          backgroundColor: Color.fromARGB(255, 19, 96, 106),
+          backgroundColor: const Color.fromARGB(255, 19, 96, 106),
         ),
         body: Padding(
           padding: const EdgeInsets.all(10),
@@ -67,14 +77,22 @@ class loginscreen extends StatelessWidget {
                           height: 20,
                         ),
                         TextFormField(
+                          obscureText: _ishidden,
                           controller: _userpasswordController,
                           cursorColor: Colors.white,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                               filled: true,
                               fillColor: Colors.white,
                               prefixIcon: Icon(Icons.lock),
                               border: OutlineInputBorder(),
-                              hintText: 'passsword'),
+                              hintText: 'passsword',
+                              suffix: InkWell(
+                                  onTap: () {
+                                    _togglePasswordView();
+                                  },
+                                  child: Icon(_ishidden
+                                      ? Icons.visibility
+                                      : Icons.visibility_off))),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'value is empty';
@@ -144,5 +162,11 @@ class loginscreen extends StatelessWidget {
         duration: Duration(seconds: 9),
       ));
     }
+  }
+
+  void _togglePasswordView() {
+    setState(() {
+      _ishidden = !_ishidden;
+    });
   }
 }
