@@ -17,7 +17,7 @@ class _bottomnaviState extends State<bottomnavi> {
   int _currentindex = 0;
   List<Widget> tabs = [
     managestore(),
-    categorysub(),
+    catelogscreen(),
     orderscreen(),
     paymentscreen(),
     ducanscreen(),
