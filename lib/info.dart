@@ -1,69 +1,59 @@
 import 'package:flutter/material.dart';
-import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
-class infoscreen extends StatelessWidget {
+class infoscreen extends StatefulWidget {
   infoscreen({super.key});
-  List topic = [
-    "Share Sukaan Spp",
-    "Shange Sanguage",
-    "Shatsapp Chat Support",
-    "Privacy Policy",
-    "Rate Us",
-    "Sign Out"
-  ];
-  List _items = [
-    Icons.share,
-    Icons.language,
-    Icons.chat,
-    Icons.shopping_bag,
-    Icons.rate_review,
-    Icons.exit_to_app,
-  ];
+
+  @override
+  State<infoscreen> createState() => _infoscreenState();
+}
+
+class _infoscreenState extends State<infoscreen> {
+  bool light = true;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('additional information'),
-      ),
-      body: ListView.builder(
-          itemCount: 6,
-          itemBuilder: (BuildContext context, int index) {
-            IconData arrowRight = const IconData(0xe09e,
-                fontFamily: 'MaterialIcons', matchTextDirection: true);
-            return ListTile(
-                leading: Icon(_items[index]),
-                trailing: Icon(index == 0
-                    ? arrowRight
-                    : index == 1
-                        ? arrowRight
-                        : null),
-                //     Expanded(
-                //         child:Icon(index==2 ? LiteRollingSwitch(
-                //       value: true,
-                //       textOn: 'disponible',
-                //       textOff: 'occupado',
-                //       colorOn: Colors.greenAccent,
-                //       colorOff: Colors.redAccent,
-                //       iconOn: Icons.done,
-                //       iconOff: Icons.remember_me_outlined,
-                //       onChanged: (bool state) {
-                //         print('turned ${(state) ? 'on' : 'off'}');
-                //       },
-                //       onDoubleTap: () {},
-                //       onTap: () {},
-                //       onSwipe: () {},
-                //     );
-                //     )
-                //   ],
-                // ),
-                //   style: const TextStyle(
-                //       color: Color.fromARGB(255, 14, 21, 14), fontSize: 50),
-                // ),
-
-                title: Text(topic[index]));
-          }),
-    ));
+            appBar: AppBar(
+              centerTitle: true,
+              title: const Text('additional information'),
+            ),
+            body: ListView(
+              children: [
+                const ListTile(
+                  leading: Icon(Icons.share),
+                  title: Text('Share Sukaan Spp'),
+                  trailing: Icon(Icons.arrow_right),
+                ),
+                const ListTile(
+                  leading: Icon(Icons.language),
+                  title: Text('change language'),
+                  trailing: Icon(Icons.arrow_right),
+                ),
+                ListTile(
+                    leading: const Icon(Icons.chat),
+                    title: const Text('chatsapp Chat Support'),
+                    trailing: Switch(
+                      value: light,
+                      onChanged: (bool value) {
+                        setState(() {
+                          light = value;
+                        });
+                      },
+                    )),
+                const ListTile(
+                  leading: Icon(Icons.share),
+                  title: Text('Privacy Policy'),
+                ),
+                const ListTile(
+                  leading: Icon(Icons.rate_review),
+                  title: Text('Rate Us'),
+                ),
+                const ListTile(
+                  leading: Icon(Icons.exit_to_app),
+                  title: Text('sign out'),
+                ),
+              ],
+            )));
   }
 }

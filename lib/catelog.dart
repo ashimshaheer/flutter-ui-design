@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
 class catelogscreen extends StatefulWidget {
   const catelogscreen({super.key});
@@ -14,38 +12,43 @@ class catelogscreen extends StatefulWidget {
 class _catelogscreenState extends State<catelogscreen> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DefaultTabController(
-          length: 2,
-          child: SafeArea(
-            child: Scaffold(
-              appBar: AppBar(
-                title: const Text("category"),
-                bottom: const TabBar(tabs: [
-                  Tab(
-                    text: 'product',
-                  ),
-                  Tab(
-                    text: 'categories',
-                  )
-                ]),
-              ),
-              body: TabBarView(children: [
-                Center(
-                  child: categorysub(),
+    return DefaultTabController(
+        length: 2,
+        child: SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              title: const Text("category"),
+              bottom: const TabBar(tabs: [
+                Tab(
+                  text: 'product',
                 ),
-                Center(
-                  child: categorysub(),
+                Tab(
+                  text: 'categories',
                 )
               ]),
             ),
-          )),
-    );
+            body: TabBarView(children: [
+              Center(
+                child: categorysub(),
+              ),
+              Center(
+                child: categorysub(),
+              )
+            ]),
+          ),
+        ));
   }
 }
 
-class categorysub extends StatelessWidget {
+class categorysub extends StatefulWidget {
   categorysub({super.key});
+
+  @override
+  State<categorysub> createState() => _categorysubState();
+}
+
+class _categorysubState extends State<categorysub> {
   final List _imagecate = [
     'assets/pic1.jpg',
     'assets/pic2.jpg',
@@ -53,6 +56,7 @@ class categorysub extends StatelessWidget {
     'assets/pic4.jpg',
     'assets/pic5.jpg',
   ];
+
   final List _titile = [
     'Couch potato| women',
     'Couch potato| men|Bi',
@@ -60,7 +64,10 @@ class categorysub extends StatelessWidget {
     'combo plahat 1|pack',
     'mug|orechard',
   ];
+
   final List _cash = ['799', '799', '399', '699', '449'];
+
+  bool light = true;
 
   @override
   Widget build(BuildContext context) {
@@ -79,26 +86,35 @@ class categorysub extends StatelessWidget {
                       children: [
                         Padding(
                             padding:
-                                const EdgeInsets.only(bottom: 3.0, left: 15.0),
+                                const EdgeInsets.only(bottom: 3.0, left: 10.0),
                             child: Image.asset(
                               _imagecate[index],
+                              fit: BoxFit.cover,
                               height: 80,
                               width: 80,
                               alignment: Alignment.topLeft,
                             )),
+                        const SizedBox(
+                          width: 10,
+                        ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10.0),
-                              child: Text(
-                                _titile[index],
-                                style: const TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.w400),
+                            SizedBox(
+                              width: 252,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    _titile[index],
+                                    style: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                  const Icon(Icons.more_vert),
+                                ],
                               ),
-                            ),
-                            const SizedBox(
-                              height: 8,
                             ),
                             const Text(
                               '1 pease',
@@ -108,7 +124,7 @@ class categorysub extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(
-                              height: 8,
+                              height: 5,
                             ),
                             Row(
                               children: [
@@ -123,50 +139,57 @@ class categorysub extends StatelessWidget {
                                 )
                               ],
                             ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            const Text(
-                              'in stock',
-                              style: TextStyle(color: Colors.green),
+                            Column(
+                              children: [
+                                SizedBox(
+                                  width: 252,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Text(
+                                        'in stock',
+                                        style: TextStyle(color: Colors.green),
+                                      ),
+                                      Switch(
+                                          value: light,
+                                          onChanged: (bool value) {
+                                            setState(() {
+                                              light = value;
+                                            });
+                                          })
+                                    ],
+                                  ),
+                                )
+                              ],
                             )
                           ],
                         ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(left: 8.0, bottom: 8.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Icon(Icons.more_vert),
-                              ),
-                            ],
-                          ),
-                        )
                       ],
                     ),
-                    const SizedBox(
-                      //  height: 70,
-                      width: 150,
-                      child: Column(children: [
-                        Divider(
-                          color: Colors.black,
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.share),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'share product',
-                              style: TextStyle(fontWeight: FontWeight.w500),
-                            )
-                          ],
-                        )
-                      ]),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 10.0),
+                      child: SizedBox(
+                        //  height: 70,
+                        width: 150,
+                        child: Column(children: [
+                          Divider(
+                            color: Colors.black,
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.share),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                'share product',
+                                style: TextStyle(fontWeight: FontWeight.w500),
+                              )
+                            ],
+                          )
+                        ]),
+                      ),
                     )
                   ],
                 ),
