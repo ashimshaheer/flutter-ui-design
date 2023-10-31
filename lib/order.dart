@@ -66,7 +66,7 @@ class _orderscreenState extends State<orderscreen> {
                     height: 90.0,
                     fit: BoxFit.cover,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Column(
@@ -79,17 +79,17 @@ class _orderscreenState extends State<orderscreen> {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Text('1 peace '),
-                      Text('Size:Xl'),
-                      SizedBox(
+                      const Text('1 peace '),
+                      const Text('Size:Xl'),
+                      const SizedBox(
                         height: 10,
                       ),
                       Column(
                         children: [
-                          Container(
+                          SizedBox(
                             width: 250,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,7 +99,7 @@ class _orderscreenState extends State<orderscreen> {
                                     Container(
                                       decoration: BoxDecoration(
                                           border: Border.all(
-                                              color: Color.fromARGB(
+                                              color: const Color.fromARGB(
                                                   255, 27, 75, 114)),
                                           color: Colors.blue.withOpacity(0.2),
                                           borderRadius:
@@ -214,11 +214,11 @@ class _orderscreenState extends State<orderscreen> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Divider(color: Colors.black),
-              SizedBox(
+              const Divider(color: Colors.black),
+              const SizedBox(
                 height: 20,
               ),
               const Column(
@@ -249,7 +249,7 @@ class _orderscreenState extends State<orderscreen> {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -278,7 +278,7 @@ class _orderscreenState extends State<orderscreen> {
                       width: 30,
                       height: 30,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Image.asset(
@@ -289,7 +289,7 @@ class _orderscreenState extends State<orderscreen> {
                   ])
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 13,
               ),
               const Row(
