@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:loginapp/bottomnavigation.dart';
 
-import 'package:loginapp/home.dart';
 import 'package:email_validator/email_validator.dart';
 
 // ignore: camel_case_types
@@ -23,7 +22,7 @@ class _loginscreenState extends State<loginscreen> {
 
   final _formkey = GlobalKey<FormState>();
 
-  bool _ishidden = false;
+  bool _ishidden = true;
 
   @override
 
@@ -43,7 +42,11 @@ class _loginscreenState extends State<loginscreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                color: const Color.fromARGB(255, 19, 96, 106),
+                width: 380,
+                height: 300,
+                decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 19, 96, 106),
+                    borderRadius: BorderRadius.circular(10)),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Form(
@@ -91,8 +94,8 @@ class _loginscreenState extends State<loginscreen> {
                                     _togglePasswordView();
                                   },
                                   child: Icon(_ishidden
-                                      ? Icons.visibility
-                                      : Icons.visibility_off))),
+                                      ? Icons.visibility_off
+                                      : Icons.visibility))),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'value is empty';
@@ -104,33 +107,28 @@ class _loginscreenState extends State<loginscreen> {
                         const SizedBox(
                           height: 20,
                         ),
-                        ElevatedButton.icon(
-                          onPressed: () {
-                            if (_formkey.currentState!.validate()) {
-                              checklogin(context);
-                            } else {
-                              if (kDebugMode) {
-                                print('data is empty');
+                        ElevatedButton(
+                            onPressed: () {
+                              if (_formkey.currentState!.validate()) {
+                                checklogin(context);
+                              } else {
+                                if (kDebugMode) {
+                                  print('data is empty');
+                                }
                               }
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(
-                              // fixedSize: const Size(
-                              //   00,
-                              //   50,
-                              // ),
-                              backgroundColor:
-                                  Color.fromARGB(255, 252, 249, 249)),
-                          icon: const Icon(
-                            Icons.check,
-                            color: Color.fromARGB(0, 174, 32, 32),
-                          ),
-                          label: const Text('login',
-                              style: TextStyle(
-                                fontSize: 30.0,
-                                color: Color.fromARGB(255, 112, 39, 39),
-                              )),
-                        )
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.grey[300],
+                                elevation: 0.0,
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20))),
+                                textStyle: const TextStyle(
+                                  color: Colors.white,
+                                )),
+                            child: const Text('LOG IN',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 20)))
                       ],
                     ),
                   ),
@@ -159,7 +157,7 @@ class _loginscreenState extends State<loginscreen> {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         backgroundColor: Color.fromARGB(255, 224, 87, 77),
         content: Text("username or password does't match"),
-        duration: Duration(seconds: 9),
+        duration: Duration(seconds: 4),
       ));
     }
   }

@@ -44,17 +44,19 @@ class managestore extends StatelessWidget {
             )
           ],
         ),
-        body: GridView.builder(
-            padding: const EdgeInsets.all(25),
-            itemCount: 7,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, crossAxisSpacing: 8, mainAxisSpacing: 8),
-            itemBuilder: (BuildContext context, index) {
-              return Card(
-                child: Container(
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: GridView.builder(
+              itemCount: 7,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, crossAxisSpacing: 8, mainAxisSpacing: 8),
+              itemBuilder: (BuildContext context, index) {
+                return Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10)),
                     height: 30,
                     width: 50,
-                    color: const Color.fromARGB(255, 240, 239, 237),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,8 +85,11 @@ class managestore extends StatelessWidget {
                                                             : Colors.amber),
                             height: 40,
                             width: 40,
-                            child:
-                                Image.asset(images[index], color: Colors.white),
+                            child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Image.asset(images[index],
+                                  color: Colors.white),
+                            ),
                           ),
                         ),
                         Container(
@@ -96,9 +101,9 @@ class managestore extends StatelessWidget {
                           ),
                         )
                       ],
-                    )),
-              );
-            }),
+                    ));
+              }),
+        ),
       ),
     );
   }

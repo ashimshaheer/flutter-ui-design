@@ -20,7 +20,7 @@ class _bottomnaviState extends State<bottomnavi> {
     catelogscreen(),
     orderscreen(),
     paymentscreen(),
-    ducanscreen(),
+    ducancreen(),
     infoscreen(),
   ];
   @override

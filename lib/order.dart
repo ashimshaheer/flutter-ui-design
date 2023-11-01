@@ -21,31 +21,35 @@ class _orderscreenState extends State<orderscreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'may 31,05:42 Pm',
-                    style: TextStyle(fontSize: 20),
+                    'May 31,05:42 Pm',
+                    style: TextStyle(fontSize: 18),
                   ),
                   Row(
                     children: [
                       Icon(
                         Icons.circle,
                         color: Colors.blue,
+                        size: 16,
+                      ),
+                      SizedBox(
+                        width: 8,
                       ),
                       Text(
                         'Delivered',
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 18),
                       ),
                     ],
                   ),
                 ],
               ),
               const SizedBox(
-                height: 10,
+                height: 8,
               ),
               const Divider(
                 color: Colors.black,
               ),
               const SizedBox(
-                height: 10,
+                height: 8,
               ),
               const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,8 +57,17 @@ class _orderscreenState extends State<orderscreen> {
                     Text('1 ITEM'),
                     Row(
                       children: [
-                        Icon(Icons.receipt_long_outlined),
-                        Text('RESEIPT'),
+                        Icon(
+                          Icons.receipt_long_outlined,
+                          color: Colors.blue,
+                        ),
+                        SizedBox(
+                          width: 7,
+                        ),
+                        Text(
+                          'RESEIPT',
+                          style: TextStyle(color: Colors.blue),
+                        ),
                       ],
                     ),
                   ]),
@@ -72,6 +85,9 @@ class _orderscreenState extends State<orderscreen> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        height: 15,
+                      ),
                       const Text(
                         'Explore | MEN | Navy blue',
                         style: TextStyle(
@@ -80,7 +96,7 @@ class _orderscreenState extends State<orderscreen> {
                         ),
                       ),
                       const SizedBox(
-                        height: 10,
+                        height: 8,
                       ),
                       const Text('1 peace '),
                       const Text('Size:Xl'),
@@ -106,16 +122,19 @@ class _orderscreenState extends State<orderscreen> {
                                               BorderRadius.circular(10)),
                                       child: Image.asset(
                                         'assets/one.png',
-                                        width: 30,
-                                        height: 30,
+                                        width: 25,
+                                        height: 25,
                                       ),
                                     ),
                                     const Icon(Icons.close),
-                                    const Icon(Icons.currency_rupee),
+                                    const Icon(
+                                      Icons.currency_rupee,
+                                      size: 20,
+                                    ),
                                     const Text(
                                       '799',
                                       style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: 18,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     )
@@ -123,11 +142,14 @@ class _orderscreenState extends State<orderscreen> {
                                 ),
                                 const Row(
                                   children: [
-                                    Icon(Icons.currency_rupee),
+                                    Icon(
+                                      Icons.currency_rupee,
+                                      size: 20,
+                                    ),
                                     Text(
                                       '799',
                                       style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: 18,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
@@ -162,17 +184,23 @@ class _orderscreenState extends State<orderscreen> {
                       ),
                       Row(
                         children: [
-                          Icon(Icons.currency_rupee),
+                          Icon(
+                            Icons.currency_rupee,
+                            size: 20,
+                          ),
                           Text(
                             '799',
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 18,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                         ],
                       )
                     ],
+                  ),
+                  SizedBox(
+                    height: 6,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
