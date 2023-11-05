@@ -1,44 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:loginapp/bottomnavigation.dart';
-import 'package:loginapp/login.dart';
+import 'package:get/get.dart';
+import 'package:loginapp/app/utils/constant.dart';
+import 'package:loginapp/app/controller/home_controll.dart';
 
 // ignore: camel_case_types
 
-class managestore extends StatelessWidget {
-  managestore({super.key});
-  List images = [
-    'assets/speaker.png',
-    'assets/payment.png',
-    'assets/discount.png',
-    'assets/person.png',
-    'assets/qr-code.png',
-    'assets/indian.png',
-    'assets/bars-sort.png',
-  ];
-  List desc = [
-    'marketing designs',
-    'online payments',
-    'Dicount Coupons',
-    'My customers',
-    'share QR code',
-    'Extra charges',
-    'Order Form',
-  ];
+// ignore: camel_case_types
+class ManageStoreScreen extends StatelessWidget {
+  ManageStoreScreen({super.key});
 
-  get child => null;
+  final HomeController controler = Get.put(HomeController());
+  final Constans constans = Constans();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 230, 228, 223),
+        backgroundColor: Constans.white,
         appBar: AppBar(
           centerTitle: true,
           title: const Text('Manage store'),
           actions: [
             IconButton(
               onPressed: () {
-                signout(context);
+                controler.signOut(context);
               },
               icon: const Icon(Icons.exit_to_app),
             )
@@ -53,7 +38,7 @@ class managestore extends StatelessWidget {
               itemBuilder: (BuildContext context, index) {
                 return Container(
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Constans.grey.shade100,
                         borderRadius: BorderRadius.circular(10)),
                     height: 30,
                     width: 50,
@@ -67,35 +52,34 @@ class managestore extends StatelessWidget {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: index == 0
-                                    ? const Color.fromARGB(255, 208, 111, 15)
+                                    ? Constans.amber
                                     : index == 1
-                                        ? Colors.green
+                                        ? Constans.green
                                         : index == 2
-                                            ? const Color.fromARGB(
-                                                255, 223, 166, 10)
+                                            ? Constans.yellowaccent
                                             : index == 3
-                                                ? const Color.fromARGB(
-                                                    255, 4, 86, 100)
+                                                ? Constans.tealshade
                                                 : index == 4
-                                                    ? Colors.grey[700]
+                                                    ? Constans.grey
                                                     : index == 5
-                                                        ? Colors.purple[900]
+                                                        ? Constans.purple
                                                         : index == 6
-                                                            ? Colors.purple
-                                                            : Colors.amber),
+                                                            ? Constans
+                                                                .purpleshade
+                                                            : Constans.amber),
                             height: 40,
                             width: 40,
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
-                              child: Image.asset(images[index],
-                                  color: Colors.white),
+                              child: Image.asset(controler.imagesOfHome[index],
+                                  color: Constans.white),
                             ),
                           ),
                         ),
                         Container(
                           padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
                           child: Text(
-                            desc[index],
+                            controler.descOfHome[index],
                             style: const TextStyle(
                                 fontSize: 23, fontWeight: FontWeight.w500),
                           ),
@@ -107,9 +91,4 @@ class managestore extends StatelessWidget {
       ),
     );
   }
-}
-
-signout(BuildContext context) {
-  Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(builder: (context) => loginscreen()), (route) => false);
 }

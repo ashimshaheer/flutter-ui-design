@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:loginapp/app/controller/category_controller.dart.dart';
+import 'package:loginapp/app/utils/constant.dart';
 
-class catelogscreen extends StatefulWidget {
-  const catelogscreen({super.key});
+class CategoryScreen extends StatefulWidget {
+  const CategoryScreen({super.key});
 
   @override
-  State<catelogscreen> createState() => _catelogscreenState();
+  State<CategoryScreen> createState() => _CategoryScreenState();
 }
 
-// categorysub category = categorysub();
-
-class _catelogscreenState extends State<catelogscreen> {
+class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -30,10 +31,10 @@ class _catelogscreenState extends State<catelogscreen> {
             ),
             body: TabBarView(children: [
               Center(
-                child: categorysub(),
+                child: CategoryOfListView(),
               ),
               Center(
-                child: categorysub(),
+                child: CategoryOfListView(),
               )
             ]),
           ),
@@ -41,39 +42,18 @@ class _catelogscreenState extends State<catelogscreen> {
   }
 }
 
-class categorysub extends StatefulWidget {
-  categorysub({super.key});
+class CategoryOfListView extends StatelessWidget {
+  CategoryOfListView({super.key});
 
-  @override
-  State<categorysub> createState() => _categorysubState();
-}
+  final CategoryController categoryController = Get.put(CategoryController());
 
-class _categorysubState extends State<categorysub> {
-  final List _imagecate = [
-    'assets/pic1.jpg',
-    'assets/pic2.jpg',
-    'assets/pic3.jpg',
-    'assets/pic4.jpg',
-    'assets/pic5.jpg',
-  ];
-
-  final List _titile = [
-    'Couch potato | women',
-    'Couch potato | men|Bi',
-    'Mug | explore',
-    'combo plahat 1 | pack',
-    'mug | orechard',
-  ];
-
-  final List _cash = ['799', '799', '399', '699', '449'];
-
-  bool light = true;
+  final constans = Constans();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-          itemCount: _imagecate.length,
+          itemCount: categoryController.imageOfCategory.length,
           itemBuilder: (context, index) {
             return Card(
               child: Column(
@@ -85,33 +65,29 @@ class _categorysubState extends State<categorysub> {
                           padding:
                               const EdgeInsets.only(bottom: 3.0, left: 10.0),
                           child: Image.asset(
-                            _imagecate[index],
+                            categoryController.imageOfCategory[index],
                             fit: BoxFit.cover,
                             height: 80,
                             width: 80,
                             alignment: Alignment.topLeft,
                           )),
-                      const SizedBox(
-                        width: 10,
-                      ),
+                      Constans().sbWd10,
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Constans().sbHt10,
                           SizedBox(
-                            height: 20,
-                          ),
-                          Container(
                             width: MediaQuery.of(context).size.width * 0.7,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  _titile[index],
+                                  categoryController.titilesOfCategory[index],
                                   style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w400),
                                 ),
-                                Icon(Icons.more_vert),
+                                const Icon(Icons.more_vert),
                               ],
                             ),
                           ),
@@ -119,12 +95,10 @@ class _categorysubState extends State<categorysub> {
                             '1 pease',
                             textAlign: TextAlign.left,
                             style: TextStyle(
-                              color: Colors.green,
+                              color: Constans.green,
                             ),
                           ),
-                          SizedBox(
-                            height: 5,
-                          ),
+                          Constans().sbHt5,
                           Row(
                             children: [
                               const Icon(
@@ -132,42 +106,39 @@ class _categorysubState extends State<categorysub> {
                                 size: 15,
                               ),
                               Text(
-                                _cash[index],
+                                categoryController.cashOfcategory[index],
                                 style: const TextStyle(
                                     fontWeight: FontWeight.w500),
                               )
                             ],
                           ),
-                          Column(
-                            children: [
-                              SizedBox(
-                                width: 252,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Text(
-                                      'in stock',
-                                      style: TextStyle(color: Colors.green),
-                                    ),
-                                    Switch(
-                                        value: light,
-                                        onChanged: (bool value) {
-                                          setState(() {
-                                            light = value;
-                                          });
-                                        })
-                                  ],
+                          SizedBox(
+                            width: 252,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text(
+                                  'in stock',
+                                  style: TextStyle(color: Constans.green),
                                 ),
-                              )
-                            ],
-                          )
+                                Obx(
+                                  () => Switch(
+                                      value:
+                                          categoryController.listOfSwich[index],
+                                      onChanged: (value) {
+                                        categoryController
+                                            .switchFunction(index);
+                                      }),
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ],
                   ),
-                  Divider(
-                    color: Colors.grey,
+                  const Divider(
+                    color: Constans.grey,
                   ),
                   const Padding(
                     padding: EdgeInsets.only(bottom: 10.0),
@@ -178,9 +149,6 @@ class _categorysubState extends State<categorysub> {
                         Row(
                           children: [
                             Icon(Icons.share),
-                            SizedBox(
-                              width: 10,
-                            ),
                             Text(
                               'share product',
                               style: TextStyle(fontWeight: FontWeight.w500),

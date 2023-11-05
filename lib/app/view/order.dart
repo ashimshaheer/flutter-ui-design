@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:loginapp/app/utils/constant.dart';
 
-class orderscreen extends StatefulWidget {
-  const orderscreen({super.key});
+class OrderScreen extends StatelessWidget {
+  OrderScreen({super.key});
 
-  @override
-  State<orderscreen> createState() => _orderscreenState();
-}
+  final Constans constans = Constans();
 
-class _orderscreenState extends State<orderscreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -17,24 +15,22 @@ class _orderscreenState extends State<orderscreen> {
           padding: EdgeInsets.all(20.0),
           child: Column(
             children: [
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'May 31,05:42 Pm',
                     style: TextStyle(fontSize: 18),
                   ),
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.circle,
-                        color: Colors.blue,
+                        color: Constans.blue,
                         size: 16,
                       ),
-                      SizedBox(
-                        width: 8,
-                      ),
-                      Text(
+                      Constans().sbwt8,
+                      const Text(
                         'Delivered',
                         style: TextStyle(fontSize: 18),
                       ),
@@ -42,52 +38,41 @@ class _orderscreenState extends State<orderscreen> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 8,
-              ),
+              Constans().sbHt8,
               const Divider(
-                color: Colors.black,
+                color: Constans.black,
               ),
-              const SizedBox(
-                height: 8,
-              ),
-              const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Constans().sbHt8,
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                const Text('1 ITEM'),
+                Row(
                   children: [
-                    Text('1 ITEM'),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.receipt_long_outlined,
-                          color: Colors.blue,
-                        ),
-                        SizedBox(
-                          width: 7,
-                        ),
-                        Text(
-                          'RESEIPT',
-                          style: TextStyle(color: Colors.blue),
-                        ),
-                      ],
+                    const Icon(
+                      Icons.receipt_long_outlined,
+                      color: Colors.blue,
                     ),
-                  ]),
+                    Constans().sbHt8,
+                    const Text(
+                      'RESEIPT',
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  ],
+                ),
+              ]),
               Row(
                 children: [
                   Image.asset(
-                    'assets/pic1.jpg',
+                    'assets/images/pic1.jpg',
                     width: 60.0,
                     height: 90.0,
                     fit: BoxFit.cover,
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
+                  Constans().sbWd10,
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        height: 15,
-                      ),
+                      Constans().sbHt10,
+                      Constans().sbHt5,
                       const Text(
                         'Explore | MEN | Navy blue',
                         style: TextStyle(
@@ -95,14 +80,10 @@ class _orderscreenState extends State<orderscreen> {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                      const SizedBox(
-                        height: 8,
-                      ),
+                      Constans().sbHt8,
                       const Text('1 peace '),
                       const Text('Size:Xl'),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      Constans().sbHt10,
                       Column(
                         children: [
                           SizedBox(
@@ -114,14 +95,13 @@ class _orderscreenState extends State<orderscreen> {
                                   children: [
                                     Container(
                                       decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: const Color.fromARGB(
-                                                  255, 27, 75, 114)),
-                                          color: Colors.blue.withOpacity(0.2),
+                                          border:
+                                              Border.all(color: Constans.blue),
+                                          color: Constans.blue.withOpacity(0.2),
                                           borderRadius:
                                               BorderRadius.circular(10)),
                                       child: Image.asset(
-                                        'assets/one.png',
+                                        'assets/images/one.png',
                                         width: 25,
                                         height: 25,
                                       ),
@@ -164,16 +144,12 @@ class _orderscreenState extends State<orderscreen> {
                   )
                 ],
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              Constans().sbHt10,
               const Divider(color: Colors.black),
-              const SizedBox(
-                height: 10,
-              ),
-              const Column(
+              Constans().sbHt10,
+              Column(
                 children: [
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -199,10 +175,8 @@ class _orderscreenState extends State<orderscreen> {
                       )
                     ],
                   ),
-                  SizedBox(
-                    height: 6,
-                  ),
-                  Row(
+                  Constans().sbHt8,
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -211,14 +185,12 @@ class _orderscreenState extends State<orderscreen> {
                       ),
                       Text(
                         'FREE',
-                        style: TextStyle(fontSize: 18, color: Colors.green),
+                        style: TextStyle(fontSize: 18, color: Constans.green),
                       )
                     ],
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
+                  Constans().sbHt10,
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -242,34 +214,28 @@ class _orderscreenState extends State<orderscreen> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Divider(color: Colors.black),
-              const SizedBox(
-                height: 20,
-              ),
-              const Column(
+              Constans().sbHt10,
+              const Divider(color: Constans.black),
+              Constans().sbHt20,
+              Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         'GUSTOMER DETAILS',
-                        style: TextStyle(color: Colors.grey, fontSize: 18),
+                        style: TextStyle(color: Constans.grey, fontSize: 18),
                       ),
                       Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.share,
-                            color: Colors.green,
+                            color: Constans.green,
                           ),
-                          SizedBox(
-                            width: 8,
-                          ),
-                          Text(
+                          Constans().sbwt8,
+                          const Text(
                             'SHARE',
-                            style: TextStyle(color: Colors.green),
+                            style: TextStyle(color: Constans.green),
                           )
                         ],
                       )
@@ -277,24 +243,20 @@ class _orderscreenState extends State<orderscreen> {
                   )
                 ],
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              Constans().sbHt10,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Deepa',
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.w500),
                       ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text(
+                      Constans().sbHt8,
+                      const Text(
                         '+91=7829000484',
                         style: TextStyle(fontSize: 15),
                       )
@@ -302,46 +264,40 @@ class _orderscreenState extends State<orderscreen> {
                   ),
                   Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                     Image.asset(
-                      'assets/whatsapp.png',
+                      'assets/images/whatsapp.png',
                       width: 30,
                       height: 30,
                     ),
-                    const SizedBox(
-                      width: 10,
-                    ),
+                    Constans().sbWd10,
                     Image.asset(
-                      'assets/whatsapp(1).png',
+                      'assets/images/whatsapp(1).png',
                       width: 30,
                       height: 30,
                     )
                   ])
                 ],
               ),
-              const SizedBox(
-                height: 13,
-              ),
-              const Row(
+              Constans().sbHt10,
+              Row(
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Address',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text(
+                      Constans().sbHt8,
+                      const Text(
                         'D1101 Chartered beverly',
                         style: TextStyle(
                           fontSize: 18,
                         ),
                       ),
-                      Text(
+                      const Text(
                         'Hills, subramayapura p.o',
                         style: TextStyle(
                           fontSize: 20,

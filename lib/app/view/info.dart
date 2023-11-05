@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:loginapp/app/controller/info_controll.dart';
 
-class infoscreen extends StatefulWidget {
-  infoscreen({super.key});
+class InfoScreen extends StatelessWidget {
+  InfoScreen({super.key});
 
-  @override
-  State<infoscreen> createState() => _infoscreenState();
-}
-
-class _infoscreenState extends State<infoscreen> {
-  bool light = true;
+  final InfoToggleSwich controller = Get.put(InfoToggleSwich());
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +30,12 @@ class _infoscreenState extends State<infoscreen> {
                 ListTile(
                     leading: const Icon(Icons.chat),
                     title: const Text('chatsapp Chat Support'),
-                    trailing: Switch(
-                      value: light,
-                      onChanged: (bool value) {
-                        setState(() {
-                          light = value;
-                        });
-                      },
+                    trailing: Obx(
+                      () => Switch(
+                          value: controller.light.value,
+                          onChanged: (bool value) {
+                            controller.toggleSwichFunction(value);
+                          }),
                     )),
                 const ListTile(
                   leading: Icon(Icons.share),
